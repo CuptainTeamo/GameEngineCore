@@ -5,11 +5,20 @@ int main()
 {
 	FileController* fc = &FileController::Instance();
 	cout << fc->GetCurDirectory() << endl;
-	int fs = fc->GetFileSize("src/core/FileController/FileController.h");
+	int fs = fc->GetFileSize("src/core/FileController/FileController.cpp");
 	unsigned char* buffer = new unsigned char[fs];
-	if (fc->ReadFile("src/core/FileController/FileController.h", buffer, fs))
+	fc->ReadFileAsync("src/core/FileController/FileController.cpp", buffer, fs);
+	while (!fc->GetFileReadDone())
 	{
-		cout << "File read operation successful." << endl;
+		cout << "Thread running....." << endl;
+	}
+	if (fc->GetFileReadSuccess())
+	{
+		cout << "File size " << fs << endl;
+	}
+	else
+	{
+		cout << "File read unsuccessful." << endl;
 	}
 	delete[] buffer;
 }
