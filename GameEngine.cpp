@@ -1,13 +1,10 @@
 #include <iostream>
-#include "src/core/FileController/FileController.h"
-#include "src/core/StackAllocator/StackAllocator.h"
-#include "src/core/ObjectPool/ObjectPool.h"
 #include "src/core/Resource/Resource.h"
 
 int main()
 {
-	ObjectPool<Resource>* objP = new ObjectPool<Resource>();
-	Resource* r1 = objP->GetResource();
+	Resource::Pool = new ObjectPool<Resource>();
+	Resource* r1 = Resource::Pool->GetResource();
 	r1->AssignNonDefaultValues();
 
 	ofstream writeStream("resource.bin", ios::out | ios::binary);
@@ -16,13 +13,13 @@ int main()
 	cout << "r1 values: ";
 	r1->ToString();
 
-	Resource* r2 = objP->GetResource();
+	Resource* r2 = Resource::Pool->GetResource();
 	ifstream readStream("resource.bin", ios::out | ios::binary);
 	r2->Deserialize(readStream);
 	readStream.close();
 	cout << "r2 values: ";
 	r2->ToString();
 
-	delete objP;
+	delete Resource::Pool;
 }
 
