@@ -9,8 +9,9 @@
 #include <cinttypes>
 #include <stdio.h>
 #include <thread>
+#include <map>
 
-#include "./core/Singleton/SIngleton.h"
+#include "./core/Singleton/Singleton.h"
 
 // OS
 #ifdef _WIN32

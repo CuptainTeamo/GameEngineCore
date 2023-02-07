@@ -130,16 +130,26 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="GameEngine.cpp" />
+    <ClCompile Include="src\core\AssetController\AssetController.cpp" />
+    <ClCompile Include="src\core\Asset\Asset.cpp" />
+    <ClCompile Include="src\core\Asset\Level\Level.cpp" />
+    <ClCompile Include="src\core\Asset\SoundEffect\SoundEffect.cpp" />
+    <ClCompile Include="src\core\Asset\Unit\Unit.cpp" />
     <ClCompile Include="src\core\FileController\FileController.cpp" />
     <ClCompile Include="src\core\Resource\Resource.cpp" />
     <ClCompile Include="src\core\StackAllocator\StackAllocator.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\core\AssetController\AssetController.h" />
+    <ClInclude Include="src\core\Asset\Asset.h" />
+    <ClInclude Include="src\core\Asset\Level\Level.h" />
+    <ClInclude Include="src\core\Asset\SoundEffect\SoundEffect.h" />
+    <ClInclude Include="src\core\Asset\Unit\Unit.h" />
     <ClInclude Include="src\core\FileController\FileController.h" />
     <ClInclude Include="src\core\ObjectPool\ObjectPool.h" />
     <ClInclude Include="src\core\Resource\Resource.h" />
     <ClInclude Include="src\core\Serializable\Serializable.h" />
-    <ClInclude Include="src\core\Singleton\SIngleton.h" />
+    <ClInclude Include="src\core\Singleton\Singleton.h" />
     <ClInclude Include="src\core\StackAllocator\StackAllocator.h" />
     <ClInclude Include="src\StandardIncludes.h" />
   </ItemGroup>
