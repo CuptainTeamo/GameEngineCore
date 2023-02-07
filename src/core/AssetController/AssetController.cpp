@@ -48,6 +48,7 @@ Asset* AssetController::GetAsset(string _guid)
 	asset->SetGUID(_guid);
 	asset->SetDataSize(FileController::Instance().GetFileSize(_guid));
 	asset->SetData(Stack->GetMemory(asset->GetDataSize()));
+	cout << "Allocating Asset " << _guid << endl;
 	FileController::Instance().ReadFile(_guid, asset->GetData(), asset->GetDataSize());
 
 	// add new asset to map

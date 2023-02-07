@@ -33,13 +33,16 @@
     <ClCompile Include="src\core\AssetController\AssetController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\core\Asset\SoundEffect\SoundEffect.cpp">
+    <ClCompile Include="src\Resource\SoundEffect\SoundEffect.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\core\Asset\Unit\Unit.cpp">
+    <ClCompile Include="src\Resource\Unit\Unit.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\core\Asset\Level\Level.cpp">
+    <ClCompile Include="src\Resource\Level\Level.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Resource\FileChunk\FileChunk.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -71,13 +74,16 @@
     <ClInclude Include="src\core\AssetController\AssetController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\core\Asset\SoundEffect\SoundEffect.h">
+    <ClInclude Include="src\Resource\SoundEffect\SoundEffect.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\core\Asset\Unit\Unit.h">
+    <ClInclude Include="src\Resource\Unit\Unit.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\core\Asset\Level\Level.h">
+    <ClInclude Include="src\Resource\Level\Level.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Resource\FileChunk\FileChunk.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
