@@ -23,6 +23,7 @@ int StackAllocator::GetByteUsed()
 
 void StackAllocator::AllocateStack(unsigned int _stackSizeByte)
 {
+	m_stackSize = _stackSizeByte;
 	m_stackStart = new unsigned char[_stackSizeByte];
 	memset(m_stackStart, 0, _stackSizeByte);
 	m_stackPosition = m_stackStart;
@@ -74,4 +75,11 @@ void StackAllocator::ClearMemory()
 	m_stackPosition = nullptr;
 	m_stackEnd = nullptr;
 
+}
+
+void StackAllocator::ResetMemory()
+{
+	memset(m_stackStart, 0, m_stackSize);
+	m_stackPosition = m_stackStart;
+	m_marker = nullptr;
 }

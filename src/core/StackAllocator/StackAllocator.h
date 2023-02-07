@@ -11,6 +11,10 @@ public:
 	// getter/setter
 	unsigned char* GetMarker();
 	int GetByteUsed();
+	unsigned char* GetStartPosition() { return m_stackStart; }
+	unsigned char* GetEndPoistion() { return m_stackEnd; }
+	int GetStackSize() { return(m_stackEnd - m_stackStart); }
+
 
 	// methods
 	void AllocateStack(unsigned int _stackSizeByte);
@@ -18,8 +22,10 @@ public:
 	void Mark();
 	void FreeToMarker();
 	void ClearMemory();
+	void ResetMemory();
 
 private:
+	unsigned int m_stackSize;
 	unsigned char* m_marker;
 	unsigned char* m_stackStart;
 	unsigned char* m_stackEnd;

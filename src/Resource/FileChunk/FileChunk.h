@@ -17,6 +17,9 @@ public:
 	void ToString() override;
 	void AssignNonDefaultValues(string _filePath);
 
+	// Accessors
+	Asset* GetFileChunk() { return m_fileChunk; }
+
 	// members
 	static ObjectPool<FileChunk>* Pool;
 private:

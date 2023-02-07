@@ -41,7 +41,8 @@ public:
 
 	void ReleaseResource(T* _object)
 	{
-		//_object->Reset();
+		cout << "Deleting asset " << _object->GetGUID() << endl;
+		_object->Reset();
 		m_available.push_back(_object);
 	}
 
