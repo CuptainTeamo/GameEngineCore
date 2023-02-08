@@ -40,6 +40,8 @@ int main()
 			delete level;
 			// create default value
 			level = new Level();
+			// Load Assets
+			level->AssignNonDefaultValues();
 			// Load data
 			level->CreateImageBuffer();
 			level->LoadLevel();

@@ -8,19 +8,10 @@ Level::Level()
 	AssetController::Instance().Initialize(50000000);
 	FileChunk::Pool = new ObjectPool<FileChunk>();
 
+	// initialize all values
 	m_fileChunks.clear();
 	m_chunkIndex = 0;
 	m_usedBufferSize = 0;
-
-	string filePath = "";
-	// for each unit, create new unit, assign value, and push to units
-	for (int count = 0; count < 7; count++)
-	{
-		filePath = "chunk" + to_string(count) + ".bin";
-		FileChunk* fileChunk = FileChunk::Pool->GetResource();
-		fileChunk->AssignNonDefaultValues(filePath);
-		m_fileChunks.push_back(fileChunk);
-	}
 }
 
 Level::~Level()
@@ -37,11 +28,23 @@ Level::~Level()
 	m_usedBufferSize = 0;
 }
 
+// Load chunk 0-6 assets
 void Level::AssignNonDefaultValues()
 {
+	//load default assets
+	string filePath = "";
+	// for each unit, create new unit, assign value, and push to units
+	for (int count = 0; count < 7; count++)
+	{
+		filePath = "chunk" + to_string(count) + ".bin";
+		FileChunk* fileChunk = FileChunk::Pool->GetResource();
+		fileChunk->AssignNonDefaultValues(filePath);
+		m_fileChunks.push_back(fileChunk);
+	}
 	Resource::AssignNonDefaultValues();
 }
 
+// Create the Image Buffer by C
 void Level::CreateImageBuffer()
 {
 	if (Level::ImageBuffer != nullptr)
@@ -58,6 +61,7 @@ void Level::CreateImageBuffer()
 	Level::ImageBuffer->AllocateStack(bufferSize);
 }
 
+// Delete Image Buffer by D
 void Level::DeleteImageBuffer()
 {
 	if (Level::ImageBuffer == nullptr)
@@ -70,6 +74,8 @@ void Level::DeleteImageBuffer()
 	cout << "Delete Successfully" << endl;
 }
 
+// The function to place asset to level Image Buffer
+// return the data chunk size
 int Level::LoadChunkToLevel(unsigned int _index, unsigned int _usedBufferSize)
 {
 	int dataSize = m_fileChunks[_index]->GetFileChunk()->GetDataSize();
@@ -78,6 +84,10 @@ int Level::LoadChunkToLevel(unsigned int _index, unsigned int _usedBufferSize)
 	return dataSize;
 }
 
+// Add Chunk by A
+// Use LoadChunkToLevel function to add chunk to Image Buffer
+// Modify the members in level
+// Save Image
 void Level::AddChunk()
 {
 	if (Level::ImageBuffer == nullptr)
@@ -95,6 +105,10 @@ void Level::AddChunk()
 	SaveImage();
 }
 
+// Remove Chunk by D
+// From Image Buffer
+// Modify the members in level
+// Save Image
 void Level::RemoveChunk()
 {
 	if (m_chunkIndex == 0)
@@ -103,6 +117,8 @@ void Level::RemoveChunk()
 		return;
 	}
 	int dataSize = m_fileChunks[(m_chunkIndex - 1)]->GetFileChunk()->GetDataSize();
+	
+	// Calculate the position in Image buffer should start reset to 0
 	byte* start0Pos = Level::ImageBuffer->GetStartPosition() + m_usedBufferSize - dataSize;
 
 	// reset rest memory to 0
@@ -113,6 +129,7 @@ void Level::RemoveChunk()
 	SaveImage();
 }
 
+// Called by other funtion to Save Image
 void Level::SaveImage()
 {
 	ofstream writeStream("NewImage.tga", ios::out | ios::binary);
@@ -120,6 +137,9 @@ void Level::SaveImage()
 	writeStream.close();
 }
 
+// Save Level by S
+// Call Serialize function to serialize data
+// Output file level.bin
 void Level::SaveLevel()
 {
 	ofstream writeStream("level.bin", ios::out | ios::binary);
@@ -129,26 +149,37 @@ void Level::SaveLevel()
 	cout << endl;
 }
 
+// Lave Level by L
+// Call Deserialize function to Deserialize data
+// Iutput file level.bin
+// Load assets to Image Buffer by data loaded
+// Save Image
 void Level::LoadLevel()
 {
 	ifstream readStream("level.bin", ios::out | ios::binary);
 	Deserialize(readStream);
 	readStream.close();
 
+	// Reset Image Buffer for loading data
 	Level::ImageBuffer->ResetMemory();
-	// using loaded data to load assets to level
+
+	// using LoadChunk funtion to add chunks to Image Buffer
 	int bufferSize = 0;
 	int loadedChunk = 0;
 	while (loadedChunk < m_chunkIndex) {
 		bufferSize += LoadChunkToLevel(loadedChunk, bufferSize);
 		loadedChunk++;
 	}
+
+	// Save Image
 	SaveImage();
 	cout << "Loaded Level: " << endl;
 	cout << endl;
 
 }
 
+// Used by Save function
+// Save members data
 void Level::Serialize(ostream& _stream)
 {
 	_stream.write(reinterpret_cast<char*>(&m_chunkIndex), sizeof(m_chunkIndex));
@@ -169,16 +200,14 @@ void Level::Serialize(ostream& _stream)
 
 }
 
+// Used by Load function
+// Load members data
+// use members data to place assets to Image Buffer
 void Level::Deserialize(istream& _stream)
 {
 	_stream.read(reinterpret_cast<char*>(&m_chunkIndex), sizeof(m_chunkIndex));
 	_stream.read(reinterpret_cast<char*>(&m_usedBufferSize), sizeof(m_usedBufferSize));
-	// Already loaded default assets, no need to load assets
-	// load assets to level
-	for (int count = 0; count < m_chunkIndex; count++)
-	{
 
-	}
 	Resource::Deserialize(_stream);
 }
 
