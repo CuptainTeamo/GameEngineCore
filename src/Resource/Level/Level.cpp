@@ -1,7 +1,5 @@
 #include "Level.h"
 
-StackAllocator* Level::ImageBuffer = nullptr;
-
 Level::Level()
 {
 	// initialize everything in the sub members
@@ -12,6 +10,8 @@ Level::Level()
 	m_fileChunks.clear();
 	m_chunkIndex = 0;
 	m_usedBufferSize = 0;
+	m_sizeOfBuffer = 0;
+	m_iamgeBuffer = nullptr;
 }
 
 Level::~Level()
@@ -19,11 +19,12 @@ Level::~Level()
 	m_fileChunks.clear();
 	delete FileChunk::Pool;
 	AssetController::Instance().Clear();
-	if (Level::ImageBuffer != nullptr)
+	if (m_iamgeBuffer != nullptr)
 	{
-		Level::ImageBuffer->ClearMemory();
+		delete m_iamgeBuffer;
 	}
-	Level::ImageBuffer = nullptr;
+	m_iamgeBuffer = nullptr;
+	m_sizeOfBuffer = 0;
 	m_chunkIndex = 0;
 	m_usedBufferSize = 0;
 }
@@ -48,7 +49,7 @@ void Level::AssignNonDefaultValues()
 // Undoable but not redoable
 void Level::CreateImageBuffer()
 {
-	if (Level::ImageBuffer != nullptr)
+	if (m_iamgeBuffer != nullptr)
 	{
 		cout << "Image Buffer already exists" << endl;
 		return;
@@ -58,8 +59,9 @@ void Level::CreateImageBuffer()
 	{
 		bufferSize += chunk->GetFileChunk()->GetDataSize();
 	}
-	ImageBuffer = new StackAllocator();
-	Level::ImageBuffer->AllocateStack(bufferSize);
+	m_iamgeBuffer = new unsigned char[bufferSize];
+	memset(m_iamgeBuffer, 0, bufferSize);
+	m_sizeOfBuffer = bufferSize;
 
 	SaveImage();
 }
@@ -68,13 +70,13 @@ void Level::CreateImageBuffer()
 // Un doable, not re doable
 void Level::DeleteImageBuffer()
 {
-	if (Level::ImageBuffer == nullptr)
+	if (m_iamgeBuffer == nullptr)
 	{
 		cout << "No Image Buffer to be deleted." << endl;
 		return;
 	}
-	delete ImageBuffer;
-	ImageBuffer = nullptr;
+	delete m_iamgeBuffer;
+	m_iamgeBuffer = nullptr;
 	cout << "Delete Successfully" << endl;
 }
 
@@ -83,7 +85,7 @@ void Level::DeleteImageBuffer()
 int Level::LoadChunkToLevel(unsigned int _index, unsigned int _usedBufferSize)
 {
 	int dataSize = m_fileChunks[_index]->GetFileChunk()->GetDataSize();
-	byte* startPosition = Level::ImageBuffer->GetStartPosition() + _usedBufferSize;
+	byte* startPosition = m_iamgeBuffer + _usedBufferSize;
 	memcpy(startPosition, m_fileChunks[_index]->GetFileChunk()->GetData(), dataSize);
 	return dataSize;
 }
@@ -94,7 +96,7 @@ int Level::LoadChunkToLevel(unsigned int _index, unsigned int _usedBufferSize)
 // Save Image
 void Level::AddChunk()
 {
-	if (Level::ImageBuffer == nullptr)
+	if (m_iamgeBuffer == nullptr)
 	{
 		cout << "No Image Buffer Created. Please use [C] to create Image Buffer first" << endl;
 		return;
@@ -123,7 +125,7 @@ void Level::RemoveChunk()
 	int dataSize = m_fileChunks[(m_chunkIndex - 1)]->GetFileChunk()->GetDataSize();
 	
 	// Calculate the position in Image buffer should start reset to 0
-	byte* start0Pos = Level::ImageBuffer->GetStartPosition() + m_usedBufferSize - dataSize;
+	byte* start0Pos = m_iamgeBuffer + m_usedBufferSize - dataSize;
 
 	// reset rest memory to 0
 	memset(start0Pos, 0, dataSize);
@@ -137,7 +139,7 @@ void Level::RemoveChunk()
 void Level::SaveImage()
 {
 	ofstream writeStream("NewImage.tga", ios::out | ios::binary);
-	writeStream.write(reinterpret_cast<char*>(Level::ImageBuffer->GetStartPosition()), Level::ImageBuffer->GetStackSize());
+	writeStream.write(reinterpret_cast<char*>(m_iamgeBuffer), m_sizeOfBuffer);
 	writeStream.close();
 }
 
@@ -166,7 +168,7 @@ void Level::LoadLevel()
 
 	CreateImageBuffer();
 	// Reset Image Buffer for loading data
-	Level::ImageBuffer->ResetMemory();
+	memset(m_iamgeBuffer, 0, m_sizeOfBuffer);
 
 	// using LoadChunk funtion to add chunks to Image Buffer
 	int bufferSize = 0;
@@ -188,6 +190,7 @@ void Level::LoadLevel()
 void Level::Serialize(ostream& _stream)
 {
 	_stream.write(reinterpret_cast<char*>(&m_chunkIndex), sizeof(m_chunkIndex));
+	_stream.write(reinterpret_cast<char*>(&m_sizeOfBuffer), sizeof(m_sizeOfBuffer));
 	_stream.write(reinterpret_cast<char*>(&m_usedBufferSize), sizeof(m_usedBufferSize));
 	
 	// Store the number of elements in vector
@@ -209,6 +212,7 @@ void Level::Serialize(ostream& _stream)
 void Level::Deserialize(istream& _stream)
 {
 	_stream.read(reinterpret_cast<char*>(&m_chunkIndex), sizeof(m_chunkIndex));
+	_stream.read(reinterpret_cast<char*>(&m_sizeOfBuffer), sizeof(m_sizeOfBuffer));
 	_stream.read(reinterpret_cast<char*>(&m_usedBufferSize), sizeof(m_usedBufferSize));
 	int numberOfChunks;
 	_stream.read(reinterpret_cast<char*>(&numberOfChunks), sizeof(numberOfChunks));

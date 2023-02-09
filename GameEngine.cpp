@@ -4,7 +4,6 @@
 int main()
 {
 	PlayCommands* pc = new PlayCommands();
-	Level* level = pc->GetLevel();
 
 	char choice;
 	do
@@ -12,7 +11,7 @@ int main()
 		cout << endl;
 		cout << "[Q]uit [S]ave [L]oad [Z] Undo [Y] Redo" << endl;
 		cout << "[C]reate image buffer [D]elete image buffer [A]dd chunk [R]emove chunk" << endl;
-		cout << "Index (" << level->GetIndex() << ") Undo count () Redo count ()" << endl;
+		cout << "Index (" << pc->GetLevel()->GetIndex() << ") Undo count () Redo count ()" << endl;
 		cin >> choice;
 		choice = toupper(choice);
 
