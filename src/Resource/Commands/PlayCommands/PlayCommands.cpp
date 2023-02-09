@@ -1,7 +1,11 @@
 #include "PlayCommands.h"
 #include "Resource/Level/Level.h"
 #include "../CommandAddChunk/CommandAddChunk.h"
+#include "../CommandSaveLevel/CommandSaveLevel.h"
+#include "../CommandLoadLevel/CommandLoadLevel.h"
 #include "../CommandRemoveChunk/CommandRemoveChunk.h"
+#include "../CommandCreateBuffer/CommandCreateBuffer.h"
+#include "..//CommandDeleteBuffer/CommandDeleteBuffer.h"
 
 PlayCommands::PlayCommands()
 {
@@ -18,9 +22,19 @@ void PlayCommands::HandleInput(char _button)
 {
 	Command* playCommand = nullptr;
 	if (_button == 'A') playCommand = new CommandAddChunk(m_level);
+	else if (_button == 'S')playCommand = new CommandSaveLevel(m_level);
 	else if (_button == 'R') playCommand = new CommandRemoveChunk(m_level);
+	else if (_button == 'C')playCommand = new CommandCreateBuffer(m_level);
+	else if (_button == 'D')playCommand = new CommandDeleteBuffer(m_level);
+	else if (_button == 'L')
+	{
+		delete m_level;
+		m_level = new Level();
+		playCommand = new CommandLoadLevel(m_level);
+	}
 	else if (_button == 'Z') { Undo(); return; }
 	else if (_button == 'Y') { Redo(); return; }
+	
 
 	if (playCommand != nullptr)
 	{

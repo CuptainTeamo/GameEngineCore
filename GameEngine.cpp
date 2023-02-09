@@ -18,62 +18,50 @@ int main()
 
 		switch (choice)
 		{
-		case 'C':
+		case 'C': // Create Image Buffer
 		{
 			pc->HandleInput('C');
-
-			//
-			level->CreateImageBuffer();
 			cout << "Executing: CommandCreateImageBuffer" << endl;
 			break;
 		}
-		case 'D':
+		case 'D': // Delete Image Buffer
 		{
 			pc->HandleInput('D');
 			cout << "Executing: CommandDeleteImageBuffer" << endl;
-			level->DeleteImageBuffer();
 			break;
 		}
-		case 'S':
+		case 'S': // Save Level
 		{
 			pc->HandleInput('S');
-			level->SaveLevel();
 			break;
 		}
-		case 'L':
+		case 'L': // Load Level
 		{
 			pc->HandleInput('L');
-
-			// delete level
-			delete level;
-			// create default value
-			level = new Level();
-			level->LoadLevel();
-
 			break;
 		}
-		case 'A':
+		case 'A': // Add Chunk
 		{
 			pc->HandleInput('A');
 			break;
 		}
-		case 'R':
+		case 'R': // Remove Chunk
 		{
 			pc->HandleInput('R');
 			break;
 		}
-		case 'Z':
+		case 'Z': // Undo
 		{
 			pc->HandleInput('Z');
 			break;
 		}
-		case 'Y':
+		case 'Y': // Redo
 		{
 			pc->HandleInput('Y');
 			break;
 		}
 			
-		case 'Q':
+		case 'Q': // Quit
 		{
 			delete pc;
 			exit(0);

@@ -11,12 +11,11 @@ public:
 	CommandAddChunk(Level* _level);
 	virtual void Execute(char _button);
 	virtual void Undo();
+	virtual void Redo();
 private:
 	Level* m_level;
-	int m_chunkIndexBefore;
-	int m_usedBufferSizeBefore;
-	int m_chunkIndex;
-	int m_usedBufferSize;
+	bool undoable = true;
+	bool redoable = true;
 };
 
 #endif // !COMMAND_ADD_CHUNK_H

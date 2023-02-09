@@ -133,7 +133,11 @@
     <ClCompile Include="src\core\AssetController\AssetController.cpp" />
     <ClCompile Include="src\core\Asset\Asset.cpp" />
     <ClCompile Include="src\Resource\Commands\CommandAddChunk\CommandAddChunk.cpp" />
+    <ClCompile Include="src\Resource\Commands\CommandCreateBuffer\CommandCreateBuffer.cpp" />
+    <ClCompile Include="src\Resource\Commands\CommandDeleteBuffer\CommandDeleteBuffer.cpp" />
+    <ClCompile Include="src\Resource\Commands\CommandLoadLevel\CommandLoadLevel.cpp" />
     <ClCompile Include="src\Resource\Commands\CommandRemoveChunk\CommandRemoveChunk.cpp" />
+    <ClCompile Include="src\Resource\Commands\CommandSaveLevel\CommandSaveLevel.cpp" />
     <ClCompile Include="src\Resource\Commands\PlayCommands\PlayCommands.cpp" />
     <ClCompile Include="src\Resource\FileChunk\FileChunk.cpp" />
     <ClCompile Include="src\Resource\Level\Level.cpp" />
@@ -148,7 +152,11 @@
     <ClInclude Include="src\core\Asset\Asset.h" />
     <ClInclude Include="src\core\Command\Command.h" />
     <ClInclude Include="src\Resource\Commands\CommandAddChunk\CommandAddChunk.h" />
+    <ClInclude Include="src\Resource\Commands\CommandCreateBuffer\CommandCreateBuffer.h" />
+    <ClInclude Include="src\Resource\Commands\CommandDeleteBuffer\CommandDeleteBuffer.h" />
+    <ClInclude Include="src\Resource\Commands\CommandLoadLevel\CommandLoadLevel.h" />
     <ClInclude Include="src\Resource\Commands\CommandRemoveChunk\CommandRemoveChunk.h" />
+    <ClInclude Include="src\Resource\Commands\CommandSaveLevel\CommandSaveLevel.h" />
     <ClInclude Include="src\Resource\Commands\PlayCommands\PlayCommands.h" />
     <ClInclude Include="src\Resource\FileChunk\FileChunk.h" />
     <ClInclude Include="src\Resource\Level\Level.h" />

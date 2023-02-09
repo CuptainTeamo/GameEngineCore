@@ -54,6 +54,18 @@
     <ClCompile Include="src\Resource\Commands\CommandRemoveChunk\CommandRemoveChunk.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Resource\Commands\CommandCreateBuffer\CommandCreateBuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Resource\Commands\CommandDeleteBuffer\CommandDeleteBuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Resource\Commands\CommandSaveLevel\CommandSaveLevel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Resource\Commands\CommandLoadLevel\CommandLoadLevel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\Singleton\Singleton.h">
@@ -105,6 +117,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Resource\Commands\CommandRemoveChunk\CommandRemoveChunk.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Resource\Commands\CommandCreateBuffer\CommandCreateBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Resource\Commands\CommandDeleteBuffer\CommandDeleteBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Resource\Commands\CommandSaveLevel\CommandSaveLevel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Resource\Commands\CommandLoadLevel\CommandLoadLevel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
