@@ -19,6 +19,7 @@ public:
 	// Methods
 	int GetChunksSize() { return m_fileChunks.size(); }
 	int GetIndex() { return m_chunkIndex; }
+	int GetUsedBufferSize() { return m_usedBufferSize; }
 	void CreateImageBuffer();
 	void DeleteImageBuffer();
 

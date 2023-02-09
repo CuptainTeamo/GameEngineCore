@@ -22,6 +22,7 @@ public:
 
 	// members
 	static ObjectPool<FileChunk>* Pool;
+
 private:
 	Asset* m_fileChunk;
 };

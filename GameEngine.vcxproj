@@ -132,6 +132,9 @@
     <ClCompile Include="GameEngine.cpp" />
     <ClCompile Include="src\core\AssetController\AssetController.cpp" />
     <ClCompile Include="src\core\Asset\Asset.cpp" />
+    <ClCompile Include="src\Resource\Commands\CommandAddChunk\CommandAddChunk.cpp" />
+    <ClCompile Include="src\Resource\Commands\CommandRemoveChunk\CommandRemoveChunk.cpp" />
+    <ClCompile Include="src\Resource\Commands\PlayCommands\PlayCommands.cpp" />
     <ClCompile Include="src\Resource\FileChunk\FileChunk.cpp" />
     <ClCompile Include="src\Resource\Level\Level.cpp" />
     <ClCompile Include="src\Resource\SoundEffect\SoundEffect.cpp" />
@@ -143,6 +146,10 @@
   <ItemGroup>
     <ClInclude Include="src\core\AssetController\AssetController.h" />
     <ClInclude Include="src\core\Asset\Asset.h" />
+    <ClInclude Include="src\core\Command\Command.h" />
+    <ClInclude Include="src\Resource\Commands\CommandAddChunk\CommandAddChunk.h" />
+    <ClInclude Include="src\Resource\Commands\CommandRemoveChunk\CommandRemoveChunk.h" />
+    <ClInclude Include="src\Resource\Commands\PlayCommands\PlayCommands.h" />
     <ClInclude Include="src\Resource\FileChunk\FileChunk.h" />
     <ClInclude Include="src\Resource\Level\Level.h" />
     <ClInclude Include="src\Resource\SoundEffect\SoundEffect.h" />

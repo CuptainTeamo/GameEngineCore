@@ -45,6 +45,7 @@ void Level::AssignNonDefaultValues()
 }
 
 // Create the Image Buffer by C
+// Undoable but not redoable
 void Level::CreateImageBuffer()
 {
 	if (Level::ImageBuffer != nullptr)
@@ -59,9 +60,12 @@ void Level::CreateImageBuffer()
 	}
 	ImageBuffer = new StackAllocator();
 	Level::ImageBuffer->AllocateStack(bufferSize);
+
+	SaveImage();
 }
 
 // Delete Image Buffer by D
+// Un doable, not re doable
 void Level::DeleteImageBuffer()
 {
 	if (Level::ImageBuffer == nullptr)
@@ -160,6 +164,7 @@ void Level::LoadLevel()
 	Deserialize(readStream);
 	readStream.close();
 
+	CreateImageBuffer();
 	// Reset Image Buffer for loading data
 	Level::ImageBuffer->ResetMemory();
 
@@ -185,7 +190,6 @@ void Level::Serialize(ostream& _stream)
 	_stream.write(reinterpret_cast<char*>(&m_chunkIndex), sizeof(m_chunkIndex));
 	_stream.write(reinterpret_cast<char*>(&m_usedBufferSize), sizeof(m_usedBufferSize));
 	
-	/*
 	// Store the number of elements in vector
 	int numberOfChunks = m_fileChunks.size();
 	_stream.write(reinterpret_cast<char*>(&numberOfChunks), sizeof(numberOfChunks));
@@ -195,7 +199,6 @@ void Level::Serialize(ostream& _stream)
 	{
 		SerializePointer(_stream, m_fileChunks[count]);
 	}
-	*/
 	Resource::Serialize(_stream);
 
 }
@@ -207,6 +210,14 @@ void Level::Deserialize(istream& _stream)
 {
 	_stream.read(reinterpret_cast<char*>(&m_chunkIndex), sizeof(m_chunkIndex));
 	_stream.read(reinterpret_cast<char*>(&m_usedBufferSize), sizeof(m_usedBufferSize));
+	int numberOfChunks;
+	_stream.read(reinterpret_cast<char*>(&numberOfChunks), sizeof(numberOfChunks));
+	for (int count = 0; count < numberOfChunks; count++)
+	{
+		FileChunk* fileChunk;
+		DeserializePointer(_stream, fileChunk);
+		m_fileChunks.push_back(fileChunk);
+	}
 
 	Resource::Deserialize(_stream);
 }

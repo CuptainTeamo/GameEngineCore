@@ -23,7 +23,7 @@ public:
 	//Methods
 	T* GetResource()
 	{
-		if (m_available.empty())
+ 		if (m_available.empty())
 		{
 			cout << "Creating new pool object: " << typeid(T).name() << endl;
 			T* resource = new T();

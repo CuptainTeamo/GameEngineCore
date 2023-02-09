@@ -1,9 +1,10 @@
+#include "Resource/Commands/PlayCommands/PlayCommands.h"
 #include "Resource/Level/Level.h"
 
 int main()
 {
-	Level* level = new Level();
-	level->AssignNonDefaultValues();
+	PlayCommands* pc = new PlayCommands();
+	Level* level = pc->GetLevel();
 
 	char choice;
 	do
@@ -19,48 +20,67 @@ int main()
 		{
 		case 'C':
 		{
+			pc->HandleInput('C');
+
+			//
 			level->CreateImageBuffer();
 			cout << "Executing: CommandCreateImageBuffer" << endl;
 			break;
 		}
 		case 'D':
 		{
+			pc->HandleInput('D');
 			cout << "Executing: CommandDeleteImageBuffer" << endl;
 			level->DeleteImageBuffer();
 			break;
 		}
 		case 'S':
 		{
+			pc->HandleInput('S');
 			level->SaveLevel();
 			break;
 		}
 		case 'L':
 		{
+			pc->HandleInput('L');
+
 			// delete level
 			delete level;
 			// create default value
 			level = new Level();
-			// Load Assets
-			level->AssignNonDefaultValues();
-			// Load data
-			level->CreateImageBuffer();
 			level->LoadLevel();
+
 			break;
 		}
 		case 'A':
 		{
-			level->AddChunk();
+			pc->HandleInput('A');
 			break;
 		}
 		case 'R':
 		{
-			level->RemoveChunk();
+			pc->HandleInput('R');
+			break;
+		}
+		case 'Z':
+		{
+			pc->HandleInput('Z');
+			break;
+		}
+		case 'Y':
+		{
+			pc->HandleInput('Y');
 			break;
 		}
 			
+		case 'Q':
+		{
+			delete pc;
+			exit(0);
+		}
 		}
 
-	} while (choice != 'Q');
+	} while (true);
 	/*
 	ofstream writeStream("level.bin", ios::out | ios::binary);
 	level->Serialize(writeStream);
