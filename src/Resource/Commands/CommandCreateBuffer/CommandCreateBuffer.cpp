@@ -3,12 +3,14 @@
 CommandCreateBuffer::CommandCreateBuffer(Level* _level)
 {
 	m_level = _level;
+	undoable = true;
+	redoable = false;
 }
 
-void CommandCreateBuffer::Execute(char _button)
+bool CommandCreateBuffer::Execute(char _button)
 {
 	// add chunk
-	m_level->CreateImageBuffer();
+	return m_level->CreateImageBuffer();
 
 }
 

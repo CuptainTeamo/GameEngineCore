@@ -17,18 +17,19 @@ public:
 	void AssignNonDefaultValues() override;
 
 	// Methods
-	int GetChunksSize() { return m_fileChunks.size(); }
 	int GetIndex() { return m_chunkIndex; }
+	int GetBufferSize() { return m_sizeOfBuffer; }
+	int GetChunksSize() { return m_fileChunks.size(); }
 	int GetUsedBufferSize() { return m_usedBufferSize; }
 
 	// Main functions / logic functions
-	void CreateImageBuffer();
-	void DeleteImageBuffer();
-	void AddChunk();
-	void RemoveChunk();
+	bool CreateImageBuffer();
+	bool DeleteImageBuffer();
+	bool AddChunk();
+	bool RemoveChunk();
 	// Save/Read
-	void SaveLevel();
-	void LoadLevel();
+	bool SaveLevel();
+	bool LoadLevel();
 
 	// helper functions
 	void SaveImage();

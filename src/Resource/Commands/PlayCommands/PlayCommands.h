@@ -17,11 +17,16 @@ public:
 
 	// accessors
 	Level* GetLevel() { return m_level; }
+	int GetUndoNum() { return m_undoCommands.size(); }
+	int GetRedoNum() { return m_redoCommands.size(); }
 
 private:
 	vector<Command*> m_undoCommands;
 	vector<Command*> m_redoCommands;
 	Level* m_level;
+
+	// if undo any command
+	bool m_undoed;
 };
 #endif // !PLAY_COMMANDS_H
 

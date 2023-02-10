@@ -3,19 +3,19 @@
 CommandLoadLevel::CommandLoadLevel(Level* _level)
 {
 	m_level = _level;
+	undoable = false;
+	redoable = false;
 }
 
-void CommandLoadLevel::Execute(char _button)
+bool CommandLoadLevel::Execute(char _button)
 {
-	m_level->LoadLevel();
+	return m_level->LoadLevel();
 
 }
 
 void CommandLoadLevel::Undo()
 {
-
 	// Not Undoable
-
 }
 
 void CommandLoadLevel::Redo()

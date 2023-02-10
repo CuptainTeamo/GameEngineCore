@@ -3,12 +3,14 @@
 CommandAddChunk::CommandAddChunk(Level* _level)
 {
 	m_level = _level;
+	undoable = true;
+	redoable = true;
 }
 
-void CommandAddChunk::Execute(char _button)
+bool CommandAddChunk::Execute(char _button)
 {
 	// add chunk
-	m_level->AddChunk();
+	return m_level->AddChunk();
 
 }
 

@@ -9,13 +9,13 @@ class CommandDeleteBuffer :public Command
 {
 public:
 	CommandDeleteBuffer(Level* _level);
-	virtual void Execute(char _button);
+	virtual bool Execute(char _button);
 	virtual void Undo();
 	virtual void Redo();
 private:
 	Level* m_level;
-	bool undoable = true;
-	bool redoable = false;
+	int m_chunkIndex;
+
 };
 
 #endif // !COMMADN_DELETE_BUFFER_H

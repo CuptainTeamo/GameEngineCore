@@ -3,12 +3,14 @@
 CommandRemoveChunk::CommandRemoveChunk(Level* _level)
 {
 	m_level = _level;
+	undoable = true;
+	redoable = true;
 }
 
-void CommandRemoveChunk::Execute(char _button)
+bool CommandRemoveChunk::Execute(char _button)
 {
 	// if add chunk
-	m_level->RemoveChunk();
+	return m_level->RemoveChunk();
 }
 
 void CommandRemoveChunk::Undo()

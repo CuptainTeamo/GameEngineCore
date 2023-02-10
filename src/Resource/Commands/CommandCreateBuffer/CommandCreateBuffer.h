@@ -9,13 +9,11 @@ class CommandCreateBuffer :public Command
 {
 public:
 	CommandCreateBuffer(Level* _level);
-	virtual void Execute(char _button);
+	virtual bool Execute(char _button);
 	virtual void Undo();
 	virtual void Redo();
 private:
 	Level* m_level;
-	bool undoable = true;
-	bool redoable = false;
 };
 
 #endif // !COMMAND_CREATE_BUFFER_H

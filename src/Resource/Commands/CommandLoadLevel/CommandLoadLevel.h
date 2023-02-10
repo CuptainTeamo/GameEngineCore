@@ -9,7 +9,7 @@ class CommandLoadLevel :public Command
 {
 public:
 	CommandLoadLevel(Level* _level);
-	virtual void Execute(char _button);
+	virtual bool Execute(char _button);
 	virtual void Undo();
 	virtual void Redo();
 
@@ -18,8 +18,6 @@ public:
 
 private:
 	Level* m_level;
-	bool undoable = false;
-	bool redoable = false;
 };
 
 #endif // !COMMAND_LOAD_LEVEL_H

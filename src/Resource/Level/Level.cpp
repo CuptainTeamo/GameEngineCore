@@ -47,12 +47,12 @@ void Level::AssignNonDefaultValues()
 
 // Create the Image Buffer by C
 // Undoable but not redoable
-void Level::CreateImageBuffer()
+bool Level::CreateImageBuffer()
 {
 	if (m_iamgeBuffer != nullptr)
 	{
 		cout << "Image Buffer already exists" << endl;
-		return;
+		return false;
 	}
 	int bufferSize = 0;
 	for (auto chunk : m_fileChunks)
@@ -64,20 +64,22 @@ void Level::CreateImageBuffer()
 	m_sizeOfBuffer = bufferSize;
 
 	SaveImage();
+	return true;
 }
 
 // Delete Image Buffer by D
 // Un doable, not re doable
-void Level::DeleteImageBuffer()
+bool Level::DeleteImageBuffer()
 {
 	if (m_iamgeBuffer == nullptr)
 	{
 		cout << "No Image Buffer to be deleted." << endl;
-		return;
+		return false;
 	}
 	delete m_iamgeBuffer;
 	m_iamgeBuffer = nullptr;
 	cout << "Delete Successfully" << endl;
+	return true;
 }
 
 // The function to place asset to level Image Buffer
@@ -94,12 +96,12 @@ int Level::LoadChunkToLevel(unsigned int _index, unsigned int _usedBufferSize)
 // Use LoadChunkToLevel function to add chunk to Image Buffer
 // Modify the members in level
 // Save Image
-void Level::AddChunk()
+bool Level::AddChunk()
 {
 	if (m_iamgeBuffer == nullptr)
 	{
 		cout << "No Image Buffer Created. Please use [C] to create Image Buffer first" << endl;
-		return;
+		return false;
 	}
 	// else if, no more chunk to add
 	// to do
@@ -109,18 +111,19 @@ void Level::AddChunk()
 	m_usedBufferSize += LoadChunkToLevel(m_chunkIndex, m_usedBufferSize);
 	m_chunkIndex++;
 	SaveImage();
+	return true;
 }
 
 // Remove Chunk by D
 // From Image Buffer
 // Modify the members in level
 // Save Image
-void Level::RemoveChunk()
+bool Level::RemoveChunk()
 {
 	if (m_chunkIndex == 0)
 	{
 		cout << "There is no chunk in the buffer, please [A]dd chunks first." << endl;
-		return;
+		return false;
 	}
 	int dataSize = m_fileChunks[(m_chunkIndex - 1)]->GetFileChunk()->GetDataSize();
 	
@@ -133,6 +136,7 @@ void Level::RemoveChunk()
 	m_chunkIndex--;
 	m_usedBufferSize -= dataSize;
 	SaveImage();
+	return false;
 }
 
 // Called by other funtion to Save Image
@@ -146,13 +150,14 @@ void Level::SaveImage()
 // Save Level by S
 // Call Serialize function to serialize data
 // Output file level.bin
-void Level::SaveLevel()
+bool Level::SaveLevel()
 {
 	ofstream writeStream("level.bin", ios::out | ios::binary);
 	Serialize(writeStream);
 	writeStream.close();
 	cout << "Level Saved: " << typeid(Level).name() << endl;
 	cout << endl;
+	return true;
 }
 
 // Lave Level by L
@@ -160,7 +165,7 @@ void Level::SaveLevel()
 // Iutput file level.bin
 // Load assets to Image Buffer by data loaded
 // Save Image
-void Level::LoadLevel()
+bool Level::LoadLevel()
 {
 	ifstream readStream("level.bin", ios::out | ios::binary);
 	Deserialize(readStream);
@@ -182,6 +187,8 @@ void Level::LoadLevel()
 	SaveImage();
 	cout << "Loaded Level: " << endl;
 	cout << endl;
+
+	return true;
 
 }
 

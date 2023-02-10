@@ -9,13 +9,11 @@ class CommandAddChunk :public Command
 {
 public:
 	CommandAddChunk(Level* _level);
-	virtual void Execute(char _button);
+	virtual bool Execute(char _button);
 	virtual void Undo();
 	virtual void Redo();
-private:
+protected:
 	Level* m_level;
-	bool undoable = true;
-	bool redoable = true;
 };
 
 #endif // !COMMAND_ADD_CHUNK_H
