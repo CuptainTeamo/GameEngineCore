@@ -61,12 +61,16 @@ public:
 	void Initialize(int _xResolution, int _yResolution);
 	void SetDrawColor(Color _color);
 	void ClearScreen();
+	void RenderPoint(Point _postion);
+	void RenderLine(Rect _points);
+	void RenderRectangle(Rect _rect);
+	void RenderFillRectangle(Rect _rect);
 	void Shutdown();
 
 private:
 	SDL_Window* m_window;
 	SDL_Renderer* m_renderer;
-	SDL_Rect* m_destRect;
+	SDL_Rect m_destRect;
 };
 #endif // !RENDERER_H
 

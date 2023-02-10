@@ -27,67 +27,67 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GameEngine.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\core\FileController\FileController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\core\StackAllocator\StackAllocator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\core\Resource\Resource.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\core\Renderer\Renderer.cpp">
+      <Filter>Source Files\Core\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="src\core\Asset\Asset.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\core\AssetController\AssetController.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\FileController\FileController.cpp">
+      <Filter>Source Files\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\core\Asset\Level\Level.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Core</Filter>
     </ClCompile>
-    <ClCompile Include="src\core\Renderer\Renderer.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\core\Resource\Resource.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\StackAllocator\StackAllocator.cpp">
+      <Filter>Source Files\Core</Filter>
     </ClCompile>
     <ClCompile Include="GameController\GameController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GameEngine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\core\Singleton\Singleton.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\StandardIncludes.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\core\FileController\FileController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\core\StackAllocator\StackAllocator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\core\ObjectPool\ObjectPool.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\core\Serializable\Serializable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\core\Resource\Resource.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\core\Renderer\Renderer.h">
+      <Filter>Header Files\Core\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="src\core\Asset\Asset.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\core\AssetController\AssetController.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\FileController\FileController.h">
+      <Filter>Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\core\Asset\Level\Level.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\core\Renderer\Renderer.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\core\ObjectPool\ObjectPool.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\Resource\Resource.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\Serializable\Serializable.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\Singleton\Singleton.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\StackAllocator\StackAllocator.h">
+      <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\StandardIncludes.h">
+      <Filter>Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="GameController\GameController.h">
       <Filter>Header Files</Filter>
