@@ -1,7 +1,7 @@
 #ifndef LEVEL_H
 #define LEVEL_H
 
-#include "../Unit/Unit.h"
+#include "core/Resource/Resource.h"
 
 class Level :public Resource
 {
@@ -20,7 +20,7 @@ private:
 	int m_mapSizeX;
 	int m_mapSizeY;
 	float m_gameTime;
-	vector<Unit*> m_units;
+	//vector<Unit*> m_units;
 };
 
 #endif // !LEVEL_H

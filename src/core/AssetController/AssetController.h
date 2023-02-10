@@ -1,9 +1,9 @@
 #ifndef ASSET_CONTROLLER_H
 #define ASSET_CONTROLLER_H
 
-#include "StandardIncludes.h"
-#include "core/StackAllocator/StackAllocator.h"
-#include "core/Asset/Asset.h"
+#include "../../StandardIncludes.h"
+#include "../StackAllocator/StackAllocator.h"
+#include "../Asset/Asset.h"
 
 class AssetController :public Singleton<AssetController>
 {

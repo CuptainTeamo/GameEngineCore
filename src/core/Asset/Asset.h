@@ -1,8 +1,8 @@
 #ifndef ASSET_H
 #define ASSET_H
 
-#include "StandardIncludes.h"
-#include "core/ObjectPool/ObjectPool.h"
+#include "../../StandardIncludes.h"
+#include "../ObjectPool/ObjectPool.h"
 
 class Asset
 {

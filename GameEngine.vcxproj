@@ -76,11 +76,17 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)External\SDL2-2.26.1\include;$(SolutionDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)External\SDL2-2.26.1\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <PreBuildEvent>
+      <Command>copy /Y "$(SolutionDir)External\SDL2-2.26.1\lib\x86\SDL2.dll" "$(TargetDir)"</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -96,7 +102,11 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PreBuildEvent>
+      <Command>copy/Y "$(SolutionDir)External\SDL2-2.26.1\lib\x86\SDL2.dll" "$(TargetDir)"</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -119,34 +129,35 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)External\SDL2-2.26.1\include;$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(SolutionDir)External\SDL2-2.26.1\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GameController\GameController.cpp" />
     <ClCompile Include="GameEngine.cpp" />
     <ClCompile Include="src\core\AssetController\AssetController.cpp" />
     <ClCompile Include="src\core\Asset\Asset.cpp" />
     <ClCompile Include="src\core\Asset\Level\Level.cpp" />
-    <ClCompile Include="src\core\Asset\SoundEffect\SoundEffect.cpp" />
-    <ClCompile Include="src\core\Asset\Unit\Unit.cpp" />
     <ClCompile Include="src\core\FileController\FileController.cpp" />
+    <ClCompile Include="src\core\Renderer\Renderer.cpp" />
     <ClCompile Include="src\core\Resource\Resource.cpp" />
     <ClCompile Include="src\core\StackAllocator\StackAllocator.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GameController\GameController.h" />
     <ClInclude Include="src\core\AssetController\AssetController.h" />
     <ClInclude Include="src\core\Asset\Asset.h" />
     <ClInclude Include="src\core\Asset\Level\Level.h" />
-    <ClInclude Include="src\core\Asset\SoundEffect\SoundEffect.h" />
-    <ClInclude Include="src\core\Asset\Unit\Unit.h" />
     <ClInclude Include="src\core\FileController\FileController.h" />
     <ClInclude Include="src\core\ObjectPool\ObjectPool.h" />
+    <ClInclude Include="src\core\Renderer\Renderer.h" />
     <ClInclude Include="src\core\Resource\Resource.h" />
     <ClInclude Include="src\core\Serializable\Serializable.h" />
     <ClInclude Include="src\core\Singleton\Singleton.h" />

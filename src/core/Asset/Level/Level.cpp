@@ -4,20 +4,14 @@ Level::Level()
 {
 	// initialize everything in the sub members
 	AssetController::Instance().Initialize(100000000);
-	Unit::Pool = new ObjectPool<Unit>();
-	SoundEffect::Pool = new ObjectPool<SoundEffect>();
 
 	m_mapSizeX = 0;
 	m_mapSizeY = 0;
 	m_gameTime = 0.0f;
-	m_units.clear();
 }
 
 Level::~Level()
 {
-	m_units.clear();
-	delete SoundEffect::Pool;
-	delete Unit::Pool;
 	AssetController::Instance().Clear();
 }
 
@@ -30,9 +24,9 @@ void Level::AssignNonDefaultValues()
 	// for each unit, create new unit, assign value, and push to units
 	for (int count = 0; count < 5; count++)
 	{
-		Unit* unit = Unit::Pool->GetResource();
-		unit->AssignNonDefaultValues();
-		m_units.push_back(unit);
+		//Unit* unit = Unit::Pool->GetResource();
+		//unit->AssignNonDefaultValues();
+		//m_units.push_back(unit);
 	}
 
 	Resource::AssignNonDefaultValues();
@@ -45,14 +39,14 @@ void Level::Serialize(ostream& _stream)
 	_stream.write(reinterpret_cast<char*>(&m_gameTime), sizeof(m_gameTime));
 	
 	// Store the number of elements in vector
-	int numberOfUnits = m_units.size();
-	_stream.write(reinterpret_cast<char*>(&numberOfUnits), sizeof(numberOfUnits));
+	//int numberOfUnits = m_units.size();
+	//_stream.write(reinterpret_cast<char*>(&numberOfUnits), sizeof(numberOfUnits));
 
 	// for each element in vector, save them by pointer
-	for (int count = 0; count < numberOfUnits; count++)
-	{
-		SerializePointer(_stream, m_units[count]);
-	}
+	//for (int count = 0; count < numberOfUnits; count++)
+	//{
+		//SerializePointer(_stream, m_units[count]);
+	//}
 	Resource::Serialize(_stream);
 
 }
@@ -72,10 +66,10 @@ void Level::Deserialize(istream& _stream)
 		//Always need object first, then write file in
 		// create empty object
 		//   Unit* unit = Unit::Pool->GetResource();
-		Unit* unit;
+		//Unit* unit;
 		// Deserialize to write file into object
-		DeserializePointer(_stream, unit);
-		m_units.push_back(unit);
+		//DeserializePointer(_stream, unit);
+		//m_units.push_back(unit);
 	}
 	Resource::Deserialize(_stream);
 }
@@ -86,9 +80,9 @@ void Level::ToString()
 	cout << "MapSizeX: " << m_mapSizeX << endl;
 	cout << "MapSizeY: " << m_mapSizeY << endl;
 	cout << "GameTime: " << m_gameTime << endl;
-	for (int count = 0; count < m_units.size(); count++)
-	{
-		m_units[count]->ToString();
-	}
+	//for (int count = 0; count < m_units.size(); count++)
+	//{
+		//m_units[count]->ToString();
+	//}
 	Resource::ToString();
 }

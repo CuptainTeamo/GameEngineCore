@@ -13,6 +13,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Core">
+      <UniqueIdentifier>{32ff7fe2-470b-462c-b4f2-0b8cfd47569d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Core\Graphics">
+      <UniqueIdentifier>{8ac3f8f3-25c1-4f86-9046-bc66823f93a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core">
+      <UniqueIdentifier>{ca9ab576-73e6-42ea-9c83-069541ef2523}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\Graphics">
+      <UniqueIdentifier>{13df016d-9c1a-45e4-837f-85be8d36f68c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEngine.cpp">
@@ -33,13 +45,13 @@
     <ClCompile Include="src\core\AssetController\AssetController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\core\Asset\SoundEffect\SoundEffect.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\core\Asset\Unit\Unit.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\core\Asset\Level\Level.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\Renderer\Renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameController\GameController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -71,13 +83,13 @@
     <ClInclude Include="src\core\AssetController\AssetController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\core\Asset\SoundEffect\SoundEffect.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\core\Asset\Unit\Unit.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\core\Asset\Level\Level.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\Renderer\Renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameController\GameController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

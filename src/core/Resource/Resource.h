@@ -1,8 +1,8 @@
 #ifndef RESOURCE_H
 #define RESOURCE_H
 
-#include "core/Serializable/Serializable.h"
-#include "core/AssetController/AssetController.h"
+#include "../Serializable/Serializable.h"
+#include "../AssetController/AssetController.h"
 
 class Resource : public Serializable
 {
