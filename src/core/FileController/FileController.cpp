@@ -21,7 +21,7 @@ string FileController::GetCurDirectory()
 int FileController::GetFileSize(string _filePath)
 {
 	m_handle = nullptr;
-	M_ASSERT(fopen_s(&m_handle, _filePath.c_str(), "rb") == 0, "Could not open file.");
+ 	M_ASSERT(fopen_s(&m_handle, _filePath.c_str(), "rb") == 0, "Could not open file.");
 	if (m_handle != nullptr)
 	{
 		M_ASSERT(fseek(m_handle, 0, SEEK_END) == 0, "Could not seek to end of file.");

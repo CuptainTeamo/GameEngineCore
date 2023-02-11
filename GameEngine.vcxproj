@@ -142,6 +142,8 @@
   <ItemGroup>
     <ClCompile Include="GameController\GameController.cpp" />
     <ClCompile Include="GameEngine.cpp" />
+    <ClCompile Include="Game\Texture\Texture.cpp" />
+    <ClCompile Include="Game\TGAReader\TGAReader.cpp" />
     <ClCompile Include="src\core\AssetController\AssetController.cpp" />
     <ClCompile Include="src\core\Asset\Asset.cpp" />
     <ClCompile Include="src\core\Asset\Level\Level.cpp" />
@@ -152,6 +154,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameController\GameController.h" />
+    <ClInclude Include="Game\Texture\Texture.h" />
+    <ClInclude Include="Game\TGAReader\TGAReader.h" />
     <ClInclude Include="src\core\AssetController\AssetController.h" />
     <ClInclude Include="src\core\Asset\Asset.h" />
     <ClInclude Include="src\core\Asset\Level\Level.h" />
