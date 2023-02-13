@@ -63,13 +63,16 @@ public:
 
 	// methods
 	void Initialize(int _xResolution, int _yResolution);
+	Point GetWindowSize();
 	void SetDrawColor(Color _color);
 	void ClearScreen();
+	void SetViewport(Rect _viewport);
 	void RenderPoint(Point _postion);
 	void RenderLine(Rect _points);
 	void RenderRectangle(Rect _rect);
 	void RenderFillRectangle(Rect _rect);
 	void RenderTexture(Texture* _texture, Point _point);
+	void RenderTexture(Texture* _texture, Rect _rect);
 	void Shutdown();
 
 private:
@@ -77,6 +80,7 @@ private:
 	SDL_Renderer* m_renderer;
 	SDL_Rect m_destRect;
 	SDL_Surface* m_surface;
+	SDL_Rect m_viewPort;
 	map<string, SDL_Texture*> m_textures;
 };
 #endif // !RENDERER_H

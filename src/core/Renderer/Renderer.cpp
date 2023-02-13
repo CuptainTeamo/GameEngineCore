@@ -7,6 +7,7 @@ Renderer::Renderer()
 	m_renderer = nullptr;
 	m_destRect = {};
 	m_surface = nullptr;
+	m_viewPort = {};
 }
 
 Renderer::~Renderer()
@@ -45,6 +46,14 @@ void Renderer::Initialize(int _xResolution, int _yResolution)
 	M_ASSERT(m_renderer != nullptr, "Failed to initialize SDL renderer.");
 }
 
+Point Renderer::GetWindowSize()
+{
+	int w;
+	int h;
+	SDL_GetWindowSize(m_window, &w, &h);
+	return Point(w, h);
+}
+
 void Renderer::SetDrawColor(Color _color)
 {
 	SDL_SetRenderDrawColor(m_renderer, _color.R, _color.G, _color.B, _color.A);
@@ -53,6 +62,15 @@ void Renderer::SetDrawColor(Color _color)
 void Renderer::ClearScreen()
 {
 	SDL_RenderClear(m_renderer);
+}
+
+void Renderer::SetViewport(Rect _viewport)
+{
+	m_viewPort.x = _viewport.X1;
+	m_viewPort.y = _viewport.Y1;
+	m_viewPort.w = _viewport.X2 - _viewport.X1;
+	m_viewPort.h = _viewport.Y2 - _viewport.Y1;
+	SDL_RenderSetViewport(m_renderer, &m_viewPort);
 }
 
 void Renderer::RenderPoint(Point _postion)
@@ -90,6 +108,15 @@ void Renderer::RenderTexture(Texture* _texture, Point _point)
 	m_destRect.y = _point.Y;
 	m_destRect.w = _texture->GetImageInfo()->Width;
 	m_destRect.h = _texture->GetImageInfo()->Height;
+	M_ASSERT(((SDL_RenderCopyEx(m_renderer, GetSDLTexture(_texture), NULL, &m_destRect, 0, NULL, SDL_FLIP_VERTICAL)) >= 0), "Could not render texture");
+}
+
+void Renderer::RenderTexture(Texture* _texture, Rect _rect)
+{
+	m_destRect.x = _rect.X1;
+	m_destRect.y = _rect.Y1;
+	m_destRect.w = _rect.X2 - _rect.X1;
+	m_destRect.h = _rect.Y2 - _rect.Y1;
 	M_ASSERT(((SDL_RenderCopyEx(m_renderer, GetSDLTexture(_texture), NULL, &m_destRect, 0, NULL, SDL_FLIP_VERTICAL)) >= 0), "Could not render texture");
 }
 
