@@ -142,24 +142,29 @@
   <ItemGroup>
     <ClCompile Include="GameController\GameController.cpp" />
     <ClCompile Include="GameEngine.cpp" />
+    <ClCompile Include="Game\SpriteSheet\SpriteSheet.cpp" />
     <ClCompile Include="Game\Texture\Texture.cpp" />
     <ClCompile Include="Game\TGAReader\TGAReader.cpp" />
     <ClCompile Include="src\core\AssetController\AssetController.cpp" />
     <ClCompile Include="src\core\Asset\Asset.cpp" />
     <ClCompile Include="src\core\Asset\Level\Level.cpp" />
     <ClCompile Include="src\core\FileController\FileController.cpp" />
+    <ClCompile Include="src\core\Graphics\SpriteAnim\SpriteAnim.cpp" />
     <ClCompile Include="src\core\Renderer\Renderer.cpp" />
     <ClCompile Include="src\core\Resource\Resource.cpp" />
     <ClCompile Include="src\core\StackAllocator\StackAllocator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameController\GameController.h" />
+    <ClInclude Include="Game\SpriteSheet\SpriteSheet.h" />
     <ClInclude Include="Game\Texture\Texture.h" />
     <ClInclude Include="Game\TGAReader\TGAReader.h" />
     <ClInclude Include="src\core\AssetController\AssetController.h" />
     <ClInclude Include="src\core\Asset\Asset.h" />
     <ClInclude Include="src\core\Asset\Level\Level.h" />
     <ClInclude Include="src\core\FileController\FileController.h" />
+    <ClInclude Include="src\core\Graphics\BasicStructs.h" />
+    <ClInclude Include="src\core\Graphics\SpriteAnim\SpriteAnim.h" />
     <ClInclude Include="src\core\ObjectPool\ObjectPool.h" />
     <ClInclude Include="src\core\Renderer\Renderer.h" />
     <ClInclude Include="src\core\Resource\Resource.h" />

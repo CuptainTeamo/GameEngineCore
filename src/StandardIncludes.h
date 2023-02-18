@@ -15,6 +15,8 @@
 #include <SDL.h>
 
 #include "./core/Singleton/Singleton.h"
+#include "core/Graphics/BasicStructs.h"
+#include "core/Resource/Resource.h"
 
 // OS
 #ifdef _WIN32

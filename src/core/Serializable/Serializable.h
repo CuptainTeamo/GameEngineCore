@@ -12,8 +12,8 @@ public:
 	virtual ~Serializable(){}
 
 	// methods
-	virtual void Serialize(ostream& _stream) = 0;
-	virtual void Deserialize(istream& _stream) = 0;
+	virtual void Serialize(std::ostream& _stream) = 0;
+	virtual void Deserialize(std::istream& _stream) = 0;
 
 };
 #endif // !SERIALIZABLE_H

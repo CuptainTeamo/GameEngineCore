@@ -2,7 +2,7 @@
 #define OBJECTPOOL_H
 
 #include "../../StandardIncludes.h"
-
+using namespace std;
 template<class T>
 class ObjectPool
 {
@@ -46,8 +46,8 @@ public:
 	}
 
 private:
-	vector<T*>m_available;
-	vector<T*>m_all;
+	vector<T*> m_available;
+	vector<T*> m_all;
 };
 #endif // !OBJECTPOOL_H
 

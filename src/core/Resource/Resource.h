@@ -3,7 +3,6 @@
 
 #include "../Serializable/Serializable.h"
 #include "../AssetController/AssetController.h"
-
 class Resource : public Serializable
 {
 public:
@@ -12,8 +11,8 @@ public:
 	virtual ~Resource();
 
 	// Methods
-	virtual void Serialize(ostream& _stream);
-	virtual void Deserialize(istream& _stream);
+	virtual void Serialize(std::ostream& _stream);
+	virtual void Deserialize(std::istream& _stream);
 	virtual void AssignNonDefaultValues();
 	virtual void ToString();
 
@@ -22,7 +21,7 @@ public:
 
 protected:
 	template<class T>
-	void SerializePointer(ostream& _stream, T* _pointer)
+	void SerializePointer(std::ostream& _stream, T* _pointer)
 	{
 		byte exists = 1;
 		if (_pointer != nullptr)
@@ -40,7 +39,7 @@ protected:
 	// pass by reference to pass the pointer address to the function
 	// change the pointer value
 	template<class T>
-	void DeserializePointer(istream& _stream, T*& _pointer)
+	void DeserializePointer(std::istream& _stream, T*& _pointer)
 	{
 		byte exists = 0;
 		_stream.read(reinterpret_cast<char*>(&exists), sizeof(byte));
@@ -51,8 +50,8 @@ protected:
 		}
 	}
 
-	void SerializeAsset(ostream& _stream, Asset* _asset);
-	void DeserializeAsset(istream& _stream, Asset*& _asset);
+	void SerializeAsset(std::ostream& _stream, Asset* _asset);
+	void DeserializeAsset(std::istream& _stream, Asset*& _asset);
 
 private:
 };
