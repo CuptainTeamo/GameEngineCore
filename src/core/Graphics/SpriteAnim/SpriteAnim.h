@@ -2,6 +2,7 @@
 #define SPRITEANIM_H
 
 #include "StandardIncludes.h"
+#include "core/Resource/Resource.h"
 
 class SpriteAnim :public Resource
 {
