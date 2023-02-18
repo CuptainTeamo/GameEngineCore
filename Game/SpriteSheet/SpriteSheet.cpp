@@ -22,6 +22,7 @@ void SpriteSheet::Serialize(ostream& _stream)
 	_stream.write(reinterpret_cast<char*>(&m_clipSizeX), sizeof(m_clipSizeX));
 	_stream.write(reinterpret_cast<char*>(&m_clipSizeY), sizeof(m_clipSizeY));
 	int count = m_animations.size();
+	_stream.write(reinterpret_cast<char*>(&count), sizeof(count));
 	for (auto& a : m_animations)
 	{
 		AnimationNames index = a.first;
