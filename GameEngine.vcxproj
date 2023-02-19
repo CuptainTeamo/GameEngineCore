@@ -76,16 +76,17 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)External\SDL2-2.26.1\include;$(SolutionDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)External\SDL2-2.26.1\include;$(SolutionDir)External\SDL2_ttf-2.20.1\include;$(SolutionDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)External\SDL2-2.26.1\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)External\SDL2-2.26.1\lib\x86;$(SolutionDir)External\SDL2_ttf-2.20.1\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PreBuildEvent>
-      <Command>copy /Y "$(SolutionDir)External\SDL2-2.26.1\lib\x86\SDL2.dll" "$(TargetDir)"</Command>
+      <Command>copy /Y "$(SolutionDir)External\SDL2-2.26.1\lib\x86\SDL2.dll" "$(TargetDir)"
+copy /Y "$(SolutionDir)External\SDL2_ttf-2.20.1\lib\x86\SDL2_ttf.dll" "$(TargetDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -149,6 +150,7 @@
     <ClCompile Include="src\core\Asset\Asset.cpp" />
     <ClCompile Include="src\core\Asset\Level\Level.cpp" />
     <ClCompile Include="src\core\FileController\FileController.cpp" />
+    <ClCompile Include="src\core\Graphics\Fonts\TTFont.cpp" />
     <ClCompile Include="src\core\Graphics\SpriteAnim\SpriteAnim.cpp" />
     <ClCompile Include="src\core\Renderer\Renderer.cpp" />
     <ClCompile Include="src\core\Resource\Resource.cpp" />
@@ -164,6 +166,7 @@
     <ClInclude Include="src\core\Asset\Level\Level.h" />
     <ClInclude Include="src\core\FileController\FileController.h" />
     <ClInclude Include="src\core\Graphics\BasicStructs.h" />
+    <ClInclude Include="src\core\Graphics\Fonts\TTFont.h" />
     <ClInclude Include="src\core\Graphics\SpriteAnim\SpriteAnim.h" />
     <ClInclude Include="src\core\ObjectPool\ObjectPool.h" />
     <ClInclude Include="src\core\Renderer\Renderer.h" />
