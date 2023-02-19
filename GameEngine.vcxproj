@@ -155,6 +155,7 @@ copy /Y "$(SolutionDir)External\SDL2_ttf-2.20.1\lib\x86\SDL2_ttf.dll" "$(TargetD
     <ClCompile Include="src\core\Renderer\Renderer.cpp" />
     <ClCompile Include="src\core\Resource\Resource.cpp" />
     <ClCompile Include="src\core\StackAllocator\StackAllocator.cpp" />
+    <ClCompile Include="src\core\Timing\Timing.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameController\GameController.h" />
@@ -174,6 +175,7 @@ copy /Y "$(SolutionDir)External\SDL2_ttf-2.20.1\lib\x86\SDL2_ttf.dll" "$(TargetD
     <ClInclude Include="src\core\Serializable\Serializable.h" />
     <ClInclude Include="src\core\Singleton\Singleton.h" />
     <ClInclude Include="src\core\StackAllocator\StackAllocator.h" />
+    <ClInclude Include="src\core\Timing\Timing.h" />
     <ClInclude Include="src\StandardIncludes.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

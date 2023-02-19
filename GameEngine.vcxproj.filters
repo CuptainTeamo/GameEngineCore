@@ -69,6 +69,9 @@
     <ClCompile Include="src\core\Graphics\Fonts\TTFont.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\core\Timing\Timing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\Renderer\Renderer.h">
@@ -123,6 +126,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\core\Graphics\Fonts\TTFont.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\Timing\Timing.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
