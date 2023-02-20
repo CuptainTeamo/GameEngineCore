@@ -30,8 +30,8 @@ void GameController::RunGame()
 	SpriteSheet* sheet = SpriteSheet::Pool->GetResource();
 	sheet->Load("Assets/Textures/Warrior.tga");
 	sheet->SetSize(17, 6, 69, 44);
-	sheet->AddAnimation(EN_AN_IDLE, 0, 6, 0.01f);
-	sheet->AddAnimation(EN_AN_RUN, 6, 8, 0.01f);
+	sheet->AddAnimation(EN_AN_IDLE, 0, 6, 6.0f);
+	sheet->AddAnimation(EN_AN_RUN, 6, 8, 6.0f);
 
 	while (m_sdlEvent.type != SDL_QUIT)
 	{
@@ -51,6 +51,9 @@ void GameController::RunGame()
 
 		std::string fps = "Frames Per Second: " + std::to_string(t->GetFPS());
 		font->Write(r->GetRenderer(), fps.c_str(), SDL_Color{ 0, 0, 255 }, SDL_Point{ 0, 0 });
+
+		std::string deltaTime = "DeltaTime: " + std::to_string(t->GetDeltaTime());
+		font->Write(r->GetRenderer(), deltaTime.c_str(), SDL_Color{ 0, 0, 255 }, SDL_Point{ 250, 0 });
 
 		SDL_RenderPresent(r->GetRenderer());
 	}
