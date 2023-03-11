@@ -3,6 +3,7 @@
 #include "../Game/SpriteSheet/SpriteSheet.h"
 #include "core/Graphics/Fonts/TTFont.h"
 #include "core/Timing/Timing.h"
+#include "core/Renderer/RenderTarget.h"
 
 GameController::GameController()
 {
@@ -23,8 +24,6 @@ void GameController::RunGame()
 	TTFont* font = new TTFont();
 	font->Initialize(20);
 
-	Point ws = r->GetWindowSize();
-
 	SpriteSheet::Pool = new ObjectPool<SpriteSheet>();
 	SpriteAnim::Pool = new ObjectPool<SpriteAnim>();
 	SpriteSheet* sheet = SpriteSheet::Pool->GetResource();
@@ -36,9 +35,14 @@ void GameController::RunGame()
 	sheet->SetBlendMode(SDL_BLENDMODE_BLEND);
 	sheet->SetBlendAlpha(128);
 
+	Point ws = r->GetWindowSize();
+	RenderTarget* rt = new RenderTarget();
+	rt->Create(ws.X, ws.Y);
+
 	while (m_sdlEvent.type != SDL_QUIT)
 	{
 		t->Tick();
+		rt->Start();
 
 		SDL_PollEvent(&m_sdlEvent);
 		r->SetDrawColor(Color(255, 255, 255, 255));
@@ -58,11 +62,16 @@ void GameController::RunGame()
 		std::string deltaTime = "DeltaTime: " + std::to_string(t->GetDeltaTime());
 		font->Write(r->GetRenderer(), deltaTime.c_str(), SDL_Color{ 0, 0, 255 }, SDL_Point{ 250, 0 });
 
+		rt->Stop();
+		r->SetDrawColor(Color(0, 0, 0, 255));
+		r->ClearScreen();
+		rt->Render(t->GetDeltaTime());
 		SDL_RenderPresent(r->GetRenderer());
 
 		t->CapFPS();
 	}
 
+	delete rt;
 	delete SpriteAnim::Pool;
 	delete SpriteSheet::Pool;
 
