@@ -20,6 +20,7 @@ public:
 
 	// methods
 	void Initialize();
+	void ChangeDisplayMode(SDL_DisplayMode* _mode);
 	void EnumerateDisplayModes();
 	Point GetWindowSize();
 	void SetDrawColor(Color _color);
