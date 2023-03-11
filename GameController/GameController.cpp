@@ -22,6 +22,7 @@ void GameController::RunGame()
 	Timing* t = &Timing::Instance();
 	r->Initialize();
 	r->EnumerateDisplayModes();
+	r->ChangeDisplayMode(&r->GetResolutions()[23]);
 
 	TTFont* font = new TTFont();
 	font->Initialize(20);
