@@ -43,7 +43,7 @@ void Renderer::Initialize()
 	M_ASSERT((SDL_Init(SDL_INIT_EVERYTHING) >= 0), "");
 	SDL_GetDisplayBounds(0, &m_srcRect);
 	m_window = SDL_CreateWindow("SDL Window", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-		m_srcRect.w, m_srcRect.y, SDL_WINDOW_SHOWN);
+		m_srcRect.w, m_srcRect.y, SDL_WINDOW_FULLSCREEN);
 	M_ASSERT(m_window != nullptr, "Fail to initialize SDL window.");
 	m_renderer = SDL_CreateRenderer(Renderer::Instance().GetWindow(), -1, 0);
 	M_ASSERT(m_renderer != nullptr, "Failed to initialize SDL renderer.");
