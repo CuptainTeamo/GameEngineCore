@@ -6,10 +6,11 @@
 
 GameController::GameController()
 {
+	m_quit = false;
 	m_sdlEvent = {};
 	m_renderer = nullptr;
 	m_fArial20 = nullptr;
-	m_quit = false;
+	m_input = nullptr;
 	m_text = "";
 }
 
@@ -43,6 +44,7 @@ void GameController::Initialize()
 	m_renderer->Initialize();
 	m_fArial20 = new TTFont();
 	m_fArial20->Initialize(20);
+	m_input = new InputController();
 }
 
 void GameController::HandleInput(SDL_Event _event)
