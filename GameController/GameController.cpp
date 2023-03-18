@@ -4,6 +4,7 @@
 #include "core/Input/InputController/InputController.h"
 #include "core/Input/Keyboard/Keyboard.h"
 #include "core/Input/Mouse/Mouse.h"
+#include "core/Input/Controller/Controller.h"
 
 GameController::GameController()
 {
@@ -15,6 +16,7 @@ GameController::GameController()
 	m_text = "";
 	m_smPos = "";
 	m_mPos = { };
+	m_ctInfo = "";
 }
 
 GameController::~GameController()
@@ -41,6 +43,7 @@ void GameController::RunGame()
 		m_fArial20->Write(m_renderer->GetRenderer(), ("Left: " + to_string(m_input->MS()->GetButLDown())).c_str(), SDL_Color{ 0, 0, 255 }, SDL_Point{ 250, 240 });
 		m_fArial20->Write(m_renderer->GetRenderer(), ("Middle: " + to_string(m_input->MS()->GetButMDown())).c_str(), SDL_Color{ 0, 0, 255 }, SDL_Point{ 250, 260 });
 		m_fArial20->Write(m_renderer->GetRenderer(), ("Right: " + to_string(m_input->MS()->GetButRDown())).c_str(), SDL_Color{ 0, 0, 255 }, SDL_Point{ 250, 280 });
+		m_fArial20->Write(m_renderer->GetRenderer(), m_ctInfo.c_str(), SDL_Color{ 255, 0, 0 }, SDL_Point{ 250, 300 });
 		SDL_RenderPresent(m_renderer->GetRenderer());
 	}
 }
@@ -75,7 +78,13 @@ void GameController::HandleInput(SDL_Event _event)
 		m_smPos = "Mouse Position [" + to_string(m_mPos.X) +
 			";" + to_string(m_mPos.Y) + "]";
 	}
-	else m_input->MS()->ProcessButtons(_event);
+	else if ((m_input->CT()->Added(m_sdlEvent)) ||
+		(m_input->CT()->Removed(m_sdlEvent)))
+	{
+		m_ctInfo = m_input->CT()->ToString();
+	}
+			
+	m_input->MS()->ProcessButtons(_event);
 }
 
 void GameController::ShutDown()
