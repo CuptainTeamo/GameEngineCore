@@ -152,6 +152,8 @@ copy /Y "$(SolutionDir)External\SDL2_ttf-2.20.1\lib\x86\SDL2_ttf.dll" "$(TargetD
     <ClCompile Include="src\core\FileController\FileController.cpp" />
     <ClCompile Include="src\core\Graphics\Fonts\TTFont.cpp" />
     <ClCompile Include="src\core\Graphics\SpriteAnim\SpriteAnim.cpp" />
+    <ClCompile Include="src\core\Input\InputController\InputController.cpp" />
+    <ClCompile Include="src\core\Input\Keyboard\Keyboard.cpp" />
     <ClCompile Include="src\core\Renderer\Renderer.cpp" />
     <ClCompile Include="src\core\Renderer\RenderTarget.cpp" />
     <ClCompile Include="src\core\Resource\Resource.cpp" />
@@ -170,6 +172,8 @@ copy /Y "$(SolutionDir)External\SDL2_ttf-2.20.1\lib\x86\SDL2_ttf.dll" "$(TargetD
     <ClInclude Include="src\core\Graphics\BasicStructs.h" />
     <ClInclude Include="src\core\Graphics\Fonts\TTFont.h" />
     <ClInclude Include="src\core\Graphics\SpriteAnim\SpriteAnim.h" />
+    <ClInclude Include="src\core\Input\InputController\InputController.h" />
+    <ClInclude Include="src\core\Input\Keyboard\Keyboard.h" />
     <ClInclude Include="src\core\ObjectPool\ObjectPool.h" />
     <ClInclude Include="src\core\Renderer\Renderer.h" />
     <ClInclude Include="src\core\Renderer\RenderTarget.h" />

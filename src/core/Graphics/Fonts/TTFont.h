@@ -9,7 +9,7 @@ class TTFont
 {
 public:
 	TTFont();
-	virtual ~TTFont(){}
+	virtual ~TTFont();
 
 	// Methods
 	void Initialize(int _pointSize);
