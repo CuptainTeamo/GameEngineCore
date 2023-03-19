@@ -47,6 +47,73 @@ bool Controller::Removed(SDL_Event _event)
 	return true;
 }
 
+bool Controller::ProcessButtons(SDL_Event _event)
+{
+	if (_event.type == SDL_CONTROLLERBUTTONDOWN)
+	{
+		for (unsigned int count = 0; count < m_controllers.size(); count++)
+		{
+			if (m_controllers[count].ID != _event.cdevice.which) continue;
+			auto v = m_controllers[count].Buttons;
+			if (std::find(v.begin(), v.end(), _event.cbutton.button) == v.end())
+			{
+				m_controllers[count].Buttons.push_back(SDL_GameControllerButton(_event.cbutton.button));
+			}
+			break;
+		}
+		return true;
+	}
+	else if (_event.type == SDL_CONTROLLERBUTTONUP)
+	{
+		for (unsigned int count = 0; count < m_controllers.size(); count++)
+		{
+			vector<SDL_GameControllerButton>* v = &m_controllers[count].Buttons;
+			for (unsigned int button = 0; button < v->size(); button++)
+			{
+				if ((*v)[button] == _event.cbutton.button)
+				{
+					v->erase(v->begin() + button);
+					break;
+				}
+			}
+		}
+		return true;
+	}
+
+	return false;
+}
+
+bool Controller::ProcessMotion(SDL_Event _event)
+{
+	if (_event.type != SDL_CONTROLLERAXISMOTION) return false;
+
+	for (unsigned int count = 0; count < m_controllers.size(); count++)
+	{
+		if (m_controllers[count].ID != _event.cdevice.which) continue;
+
+		// Left Analog Stick
+		if (_event.caxis.axis == 0)
+		{
+			m_controllers[count].LeftAxis.X = _event.caxis.value;
+		}
+		else if (_event.caxis.axis == 1)
+		{
+			m_controllers[count].LeftAxis.Y = _event.caxis.value;
+		}
+
+		//Right Analog Stick
+		if (_event.caxis.axis == 2)
+		{
+			m_controllers[count].RightAxis.X = _event.caxis.value;
+		}
+		else if (_event.caxis.axis == 3)
+		{
+			m_controllers[count].RightAxis.Y = _event.caxis.value;
+		}
+	}
+	return true;
+}
+
 string Controller::ToString()
 {
 	int cc = 0;
@@ -55,6 +122,7 @@ string Controller::ToString()
 	{
 		cc++;
 		s += to_string(cc) + " - " + c.Name + ": ";
+		s += c.ToString();
 	}
 	return s;
 }
