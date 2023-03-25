@@ -76,17 +76,18 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)External\SDL2-2.26.1\include;$(SolutionDir)External\SDL2_ttf-2.20.1\include;$(SolutionDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)External\SDL2-2.26.1\include;$(SolutionDir)External\SDL2_ttf-2.20.1\include;$(SolutionDir)External\SDL2_mixer-2.6.3\include;$(SolutionDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)External\SDL2-2.26.1\lib\x86;$(SolutionDir)External\SDL2_ttf-2.20.1\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_ttf.lib;SDL@_mixer.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)External\SDL2-2.26.1\lib\x86;$(SolutionDir)External\SDL2_ttf-2.20.1\lib\x86;$(SolutionDir)External\SDL2_mixer-2.6.3\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PreBuildEvent>
       <Command>copy /Y "$(SolutionDir)External\SDL2-2.26.1\lib\x86\SDL2.dll" "$(TargetDir)"
-copy /Y "$(SolutionDir)External\SDL2_ttf-2.20.1\lib\x86\SDL2_ttf.dll" "$(TargetDir)"</Command>
+copy /Y "$(SolutionDir)External\SDL2_ttf-2.20.1\lib\x86\SDL2_ttf.dll" "$(TargetDir)"
+copy /Y "$(SolutionDir)External\SDL2_mixer-2.6.2\lib\x86\SDL2_mixer.dll" "$(TargetDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -159,6 +160,9 @@ copy /Y "$(SolutionDir)External\SDL2_ttf-2.20.1\lib\x86\SDL2_ttf.dll" "$(TargetD
     <ClCompile Include="src\core\Renderer\Renderer.cpp" />
     <ClCompile Include="src\core\Renderer\RenderTarget.cpp" />
     <ClCompile Include="src\core\Resource\Resource.cpp" />
+    <ClCompile Include="src\core\Sound\AudioController\AudioController.cpp" />
+    <ClCompile Include="src\core\Sound\SoundEffect\song.cpp" />
+    <ClCompile Include="src\core\Sound\SoundEffect\SoundEffect.cpp" />
     <ClCompile Include="src\core\StackAllocator\StackAllocator.cpp" />
     <ClCompile Include="src\core\Timing\Timing.cpp" />
   </ItemGroup>
@@ -184,6 +188,9 @@ copy /Y "$(SolutionDir)External\SDL2_ttf-2.20.1\lib\x86\SDL2_ttf.dll" "$(TargetD
     <ClInclude Include="src\core\Resource\Resource.h" />
     <ClInclude Include="src\core\Serializable\Serializable.h" />
     <ClInclude Include="src\core\Singleton\Singleton.h" />
+    <ClInclude Include="src\core\Sound\AudioController\AudioController.h" />
+    <ClInclude Include="src\core\Sound\SoundEffect\song.h" />
+    <ClInclude Include="src\core\Sound\SoundEffect\SoundEffect.h" />
     <ClInclude Include="src\core\StackAllocator\StackAllocator.h" />
     <ClInclude Include="src\core\Timing\Timing.h" />
     <ClInclude Include="src\StandardIncludes.h" />

@@ -18,6 +18,7 @@
 #include <SDL.h>
 #include <SDL_ttf.h>
 #include <SDL_pixels.h>
+#include <SDL_mixer.h>
 
 #include "./core/Singleton/Singleton.h"
 #include "core/Graphics/BasicStructs.h"
