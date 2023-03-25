@@ -60,8 +60,8 @@ void GameController::Initialize()
 	m_fArial20 = new TTFont();
 	m_fArial20->Initialize(20);
 	m_audio = &AudioController::Instance();
-	m_effect = m_audio->LoadEffect("");
-	m_song = m_audio->LoadSong("");
+	m_effect = m_audio->LoadEffect("Assets/Audio/Effects/Whoosh.wav");
+	m_song = m_audio->LoadSong("Assets/Audio/Music/Track1.mp3");
 }
 
 void GameController::HandleInput(SDL_Event _event)
