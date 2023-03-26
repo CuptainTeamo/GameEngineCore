@@ -163,6 +163,7 @@ copy /Y "$(SolutionDir)External\SDL2_mixer-2.6.3\lib\x86\SDL2_mixer.dll" "$(Targ
     <ClCompile Include="src\core\Sound\AudioController\AudioController.cpp" />
     <ClCompile Include="src\core\Sound\SoundEffect\song.cpp" />
     <ClCompile Include="src\core\Sound\SoundEffect\SoundEffect.cpp" />
+    <ClCompile Include="src\core\Sound\WavDraw.cpp" />
     <ClCompile Include="src\core\StackAllocator\StackAllocator.cpp" />
     <ClCompile Include="src\core\Timing\Timing.cpp" />
   </ItemGroup>
@@ -191,6 +192,7 @@ copy /Y "$(SolutionDir)External\SDL2_mixer-2.6.3\lib\x86\SDL2_mixer.dll" "$(Targ
     <ClInclude Include="src\core\Sound\AudioController\AudioController.h" />
     <ClInclude Include="src\core\Sound\SoundEffect\song.h" />
     <ClInclude Include="src\core\Sound\SoundEffect\SoundEffect.h" />
+    <ClInclude Include="src\core\Sound\WavDraw.h" />
     <ClInclude Include="src\core\StackAllocator\StackAllocator.h" />
     <ClInclude Include="src\core\Timing\Timing.h" />
     <ClInclude Include="src\StandardIncludes.h" />

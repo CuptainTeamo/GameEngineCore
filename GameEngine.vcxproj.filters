@@ -96,6 +96,9 @@
     <ClCompile Include="src\core\Sound\AudioController\AudioController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\core\Sound\WavDraw.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\Renderer\Renderer.h">
@@ -177,6 +180,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\core\Sound\AudioController\AudioController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\Sound\WavDraw.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
