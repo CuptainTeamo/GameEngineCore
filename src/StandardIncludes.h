@@ -20,6 +20,8 @@
 #include <SDL_ttf.h>
 #include <SDL_pixels.h>
 #include <SDL_mixer.h>
+#include<glm.hpp>
+#include <ext.hpp>
 
 #include "./core/Singleton/Singleton.h"
 #include "core/Graphics/BasicStructs.h"

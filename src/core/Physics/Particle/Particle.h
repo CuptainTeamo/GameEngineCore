@@ -2,7 +2,6 @@
 #define PARTICLE_H
 
 #include "../RigidBody/RigidBody.h"
-#include "core/ObjectPool/ObjectPool.h"
 
 class Particle :public RigidBody
 {
