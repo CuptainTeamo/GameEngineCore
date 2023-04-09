@@ -5,6 +5,12 @@ PhysicsController::PhysicsController()
 {
 	m_gravity = -9.81f;
 	m_force = glm::vec2{ 0, 0 };
+	Particle::Pool = new ObjectPool<Particle>();
+}
+
+PhysicsController::~PhysicsController()
+{
+	delete Particle::Pool;
 }
 
 void PhysicsController::Update(float _deltaTIme)
@@ -15,6 +21,8 @@ void PhysicsController::Update(float _deltaTIme)
 		m_force.y = p->GetMass() * m_gravity;
 		p->Update(_deltaTIme, m_force);
 		if (!p->GetDead()) continue;
+		p->Reset();
+		Particle::Pool->ReleaseResource(p);
 		m_particles.erase(m_particles.begin() + count);
 		count--;
 	}
