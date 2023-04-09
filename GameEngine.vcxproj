@@ -76,7 +76,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)External\SDL2-2.26.1\include;$(SolutionDir)External\SDL2_ttf-2.20.1\include;$(SolutionDir)External\SDL2_mixer-2.6.3\include;$(SolutionDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)External\SDL2-2.26.1\include;$(SolutionDir)External\SDL2_ttf-2.20.1\include;$(SolutionDir)External\SDL2_mixer-2.6.3\include;$(SolutionDir)External\glm;$(SolutionDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -157,6 +157,9 @@ copy /Y "$(SolutionDir)External\SDL2_mixer-2.6.3\lib\x86\SDL2_mixer.dll" "$(Targ
     <ClCompile Include="src\core\Input\InputController\InputController.cpp" />
     <ClCompile Include="src\core\Input\Keyboard\Keyboard.cpp" />
     <ClCompile Include="src\core\Input\Mouse\Mouse.cpp" />
+    <ClCompile Include="src\core\Physics\Particle\Particle.cpp" />
+    <ClCompile Include="src\core\Physics\PhysicsController.cpp" />
+    <ClCompile Include="src\core\Physics\RigidBody\RigidBody.cpp" />
     <ClCompile Include="src\core\Renderer\Renderer.cpp" />
     <ClCompile Include="src\core\Renderer\RenderTarget.cpp" />
     <ClCompile Include="src\core\Resource\Resource.cpp" />
@@ -184,6 +187,9 @@ copy /Y "$(SolutionDir)External\SDL2_mixer-2.6.3\lib\x86\SDL2_mixer.dll" "$(Targ
     <ClInclude Include="src\core\Input\Keyboard\Keyboard.h" />
     <ClInclude Include="src\core\Input\Mouse\Mouse.h" />
     <ClInclude Include="src\core\ObjectPool\ObjectPool.h" />
+    <ClInclude Include="src\core\Physics\Particle\Particle.h" />
+    <ClInclude Include="src\core\Physics\PhysicsController.h" />
+    <ClInclude Include="src\core\Physics\RigidBody\RigidBody.h" />
     <ClInclude Include="src\core\Renderer\Renderer.h" />
     <ClInclude Include="src\core\Renderer\RenderTarget.h" />
     <ClInclude Include="src\core\Resource\Resource.h" />

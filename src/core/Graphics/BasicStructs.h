@@ -49,10 +49,10 @@ struct Point
 		Y = 0;
 	}
 
-	Point(unsigned int _x, unsigned int _y)
+	Point(int _x, int _y)
 	{
-		X = _x;
-		Y = _y;
+		X = (unsigned int)_x;
+		Y = (unsigned int)_y;
 	}
 
 	unsigned int X;
