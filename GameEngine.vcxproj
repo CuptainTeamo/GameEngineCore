@@ -149,6 +149,8 @@ copy /Y "$(SolutionDir)External\SDL2_mixer-2.6.3\lib\x86\SDL2_mixer.dll" "$(Targ
     <ClCompile Include="Game\TGAReader\TGAReader.cpp" />
     <ClCompile Include="src\core\AssetController\AssetController.cpp" />
     <ClCompile Include="src\core\Asset\Asset.cpp" />
+    <ClCompile Include="src\core\Asset\Heroine\Heroine.cpp" />
+    <ClCompile Include="src\core\Asset\Heroine\HeroineState\HeroineState.cpp" />
     <ClCompile Include="src\core\Asset\Level\Level.cpp" />
     <ClCompile Include="src\core\FileController\FileController.cpp" />
     <ClCompile Include="src\core\Graphics\Fonts\TTFont.cpp" />
@@ -177,6 +179,8 @@ copy /Y "$(SolutionDir)External\SDL2_mixer-2.6.3\lib\x86\SDL2_mixer.dll" "$(Targ
     <ClInclude Include="Game\TGAReader\TGAReader.h" />
     <ClInclude Include="src\core\AssetController\AssetController.h" />
     <ClInclude Include="src\core\Asset\Asset.h" />
+    <ClInclude Include="src\core\Asset\Heroine\HeroineState\HeroineState.h" />
+    <ClInclude Include="src\core\Asset\Heroine\Heroine.h" />
     <ClInclude Include="src\core\Asset\Level\Level.h" />
     <ClInclude Include="src\core\FileController\FileController.h" />
     <ClInclude Include="src\core\Graphics\BasicStructs.h" />

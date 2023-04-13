@@ -10,15 +10,14 @@ RigidBody::RigidBody()
 void RigidBody::Update(float _deltaTime, glm::vec2 _force)
 {
 	// Apply forces
-	_force += m_wind + m_buoyancy;
+	_force += m_wind + m_buoyancy + m_randomForce;
 	_force.y *= -1;
-	if (m_mass < 1) m_acceleration = _force * m_mass;
-	else m_acceleration = _force / m_mass;
+	m_acceleration = _force * m_mass;
 	m_velocity += m_acceleration * _deltaTime;
 	m_position += m_velocity * _deltaTime;
 
 	// Calculating decays
-	m_buoyancy -= m_buoyancyDecay * -_deltaTime;
+	m_buoyancy -= m_buoyancyDecay * _deltaTime;
 	m_buoyancy.x = std::fmax(m_buoyancy.x, m_buoyancyMin.x);
 	m_buoyancy.y = std::fmax(m_buoyancy.y, m_buoyancyMin.y);
 }

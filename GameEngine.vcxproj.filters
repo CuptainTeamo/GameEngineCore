@@ -108,6 +108,12 @@
     <ClCompile Include="src\core\Physics\PhysicsController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\core\Asset\Heroine\HeroineState\HeroineState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\Asset\Heroine\Heroine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\Renderer\Renderer.h">
@@ -201,6 +207,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\core\Physics\PhysicsController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\Asset\Heroine\HeroineState\HeroineState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\core\Asset\Heroine\Heroine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

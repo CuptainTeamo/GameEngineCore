@@ -22,7 +22,7 @@ void PhysicsController::Update(float _deltaTIme)
 	for (int count = 0; count < m_particles.size(); count++)
 	{
 		Particle* p = m_particles[count];
-		m_force.y = p->GetMass() * m_gravity;
+		m_force.y = m_gravity;
 		p->Update(_deltaTIme, m_force);
 		if (!p->GetDead()) continue;
 		p->Reset();
@@ -36,46 +36,14 @@ void PhysicsController::Update(float _deltaTIme)
 	for (int count = 0; count < m_bodies.size(); count++)
 	{
 		RigidBody* b = m_bodies[count];
-		b->Update(_deltaTIme, glm::vec2{ 0, 0 });
-		if (b->GetPosition().x >= p.X - 16)
+		m_force.y = m_gravity;
+		b->Update(_deltaTIme, m_force);
+		if (b->GetPosition().y >= 200)
 		{
-			Reflect(out, b->GetVelocity(), glm::vec2(-1, 0));
-			b->SetVelocity(out);
-		}
-		else if (b->GetPosition().x <= 16)
-		{
-			Reflect(out, b->GetVelocity(), glm::vec2(1, 0));
-			b->SetVelocity(out);
-		}
-		else if (b->GetPosition().y >= p.Y - 16)
-		{
-			Reflect(out, b->GetVelocity(), glm::vec2(0, -1));
-			b->SetVelocity(out);
-		}
-		else if (b->GetPosition().y <= 16)
-		{
-			Reflect(out, b->GetVelocity(), glm::vec2(0, 1));
-			b->SetVelocity(out);
-		}
-
-		if (m_bodies.empty()) return;
-		for (int c1 = 0; c1 < m_bodies.size() - 1; c1++)
-		{
-			for (int c2 = c1 + 1; c2 < m_bodies.size(); c2++)
-			{
-				RigidBody* b1 = m_bodies[c1];
-				RigidBody* b2 = m_bodies[c2];
-				float dist = glm::distance(b1->GetPosition(), b2->GetPosition());
-				if (dist <= 32)
-				{
-					HandleCollision(b1, b2, dist);
-					do
-					{
-						b1->Update(_deltaTIme, glm::vec2{ 0, 0 });
-						b2->Update(_deltaTIme, glm::vec2{ 0, 0 });
-					} while (glm::distance(b1->GetPosition(), b2->GetPosition()) <= 32);
-				}
-			}
+			glm::vec2 p = b->GetPosition();
+			p.y = 200;
+			b->SetPosition(p);
+			b->SetVelocity(glm::vec2(0, 0));
 		}
 	}
 }
